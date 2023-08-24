@@ -36,7 +36,7 @@ if options.store:
         storebool = True
 else:
     storebool = True
-    print("Enter --store False or True to store tiled images")
+    #print("Enter --store False or True to store tiled images")
 
 if options.renderavg:
     print("renderavg: {}".format(options.renderavg))
