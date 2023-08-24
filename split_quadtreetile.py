@@ -13,7 +13,7 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser()
 parser.add_argument("--path", type=str)
-parser.add_argument("--store", type=str)
+parser.add_argument("--store", type=str, default=True)
 parser.add_argument("--threshold", type=int, default=40)
 parser.add_argument("--minCell", type=int, default=40)
 parser.add_argument("--reshape", type=int, default=6000)
@@ -35,7 +35,7 @@ if options.store:
     else:
         storebool = True
 else:
-    storebool = False
+    storebool = True
     print("Enter --store False or True to store tiled images")
 
 if options.renderavg:
