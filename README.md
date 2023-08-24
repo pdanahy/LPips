@@ -1,3 +1,8 @@
+## Adaptation Written by Patrick Danahy
+
+This implementation, which includes adaptation scripts for image decomposition, computer vision functions and algorithmic compositing is meant to run in coordination with Google Colab.
+
+
 
 ## Perceptual Similarity Metric and Dataset [[Project Page]](http://richzhang.github.io/PerceptualSimilarity/)
 
