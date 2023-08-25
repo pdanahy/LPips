@@ -46,7 +46,8 @@ cvimg1 = cv2.imread(img_name)
 #crop_img = cvimg1[int(y):int(y+h), int(x):int(x+w)]
 
 
-imgT = imutils.resize(cvimg1, width = options.reshape)
+#imgT = imutils.resize(cvimg1, width = options.reshape)
+imgT = cvimg1
 #imgT = imutils.resize(cvimg1, width = options.reshape)
 
 # make blank numpy array the shape of the reference image
