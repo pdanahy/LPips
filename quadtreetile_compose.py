@@ -30,10 +30,11 @@ else:
     img_name = None
     print("Enter --ref Argument for Image Reference")
 
-path = os.path.splitext(img_name)[0]
-print (path)
-name = path.split('/')[-1]
-name = os.path.join(path, str(name[0:10]))
+path = os.path.split(img_name)[0]
+partial_name = path.split('/')[-1]
+
+name = os.path.join(path, str(partial_name[0:10]))
+print (name)
 
 cvimg1 = cv2.imread(img_name)
 
@@ -74,6 +75,4 @@ for i,file in enumerate(list_of_files):
     #if cvimg2.shape == (int(nodeprops[1])-int(nodeprops[0]),int(nodeprops[3])-int(nodeprops[2]), 3):
     blankimg[int(nodeprops[0]):int(nodeprops[1]), int(nodeprops[2]):int(nodeprops[3])] = cvimg2
 
-cv2.imwrite(name + '_quadNodes_Storage.jpg', blankimg)
-
-    
+cv2.imwrite(partial_name + '_quadNodes_Storage.jpg', blankimg)
