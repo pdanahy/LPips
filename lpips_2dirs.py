@@ -137,6 +137,8 @@ for i,file in enumerate(list_of_files):
       
       # Load images
       img0 = lpips.im2tensor(lpips.load_image(os.path.join(opt.dir0,file))) # RGB image from [-1,1]
+      cvimg0 = cv2.imread(os.path.join(opt.dir0,file))
+      img0height, img0width, channels = cvimg0.shape
 
       clstimg = np.zeros((img0.shape[1],img0.shape[0],3), np.uint8)
       clstdist = 99999999999
@@ -152,7 +154,8 @@ for i,file in enumerate(list_of_files):
         
         if opt.qtfixed == 'False':
           if str(tf.shape(img1.cpu())) != str(tf.shape(img0.cpu())):
-            img1 = F.interpolate(img1, size=(tf.shape(img0.cpu())[2],tf.shape(img0.cpu())[3]))
+            #img1 = F.interpolate(img1, size=(tf.shape(img0.cpu())[2],tf.shape(img0.cpu())[3]))
+            img1 = F.interpolate(img1, size=(img0height,img0width))
 
           #print(tf.shape(img1))
 
