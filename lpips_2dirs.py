@@ -12,6 +12,7 @@ import imutils
 from skimage.metrics import structural_similarity as compare_ssim
 import torch.nn.functional as F
 import time
+import torchvision
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('-d0','--dir0', type=str, default='./imgs/ex_dir0')
@@ -24,6 +25,8 @@ parser.add_argument('-qtfixed','--qtfixed', type=str, default='False')
 parser.add_argument('--continue_run', type=str, default='False')
 
 opt = parser.parse_args()
+
+
 
 ## Initializing the model
 loss_fn = lpips.LPIPS(net='alex',version=opt.version)
@@ -156,8 +159,9 @@ for i,file in enumerate(list_of_files):
           if str(tf.shape(img1.cpu())) != str(tf.shape(img0.cpu())):
             #img1 = F.interpolate(img1, size=(tf.shape(img0.cpu())[2],tf.shape(img0.cpu())[3]))
             img1 = F.interpolate(img1, size=(img0height,img0width))
-
-          #print(tf.shape(img1))
+          
+          img0 = torchvision.transforms.functional.adjust_saturation(img0, 0.1) 
+          img1 = torchvision.transforms.functional.adjust_saturation(img1, 0.1) 
 
           if(opt.use_gpu):
             img0 = img0.cuda()
